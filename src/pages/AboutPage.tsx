@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/common/Button';
 import { RouteLine } from '../components/common/RouteLine';
-import { COMPANY_INFO } from '../data/siteData';
+import { COMPANY_INFO, COMPANY_LEADERSHIP_PROFILES } from '../data/siteData';
 
 interface AboutPageProps {
   onOpenInquiry: () => void;
@@ -37,11 +37,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
     },
   ];
 
-  const leadership = [
-    { name: 'Oluwayomi Elizabeth Dada', role: 'Managing Director' },
-    { name: 'Babatunde Leo Dada', role: 'Managing Partner' },
-  ];
-
   return (
     <div className="min-h-screen bg-brand-bg text-brand-charcoal pt-28 md:pt-36">
 
@@ -49,7 +44,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
       <section className="relative overflow-hidden border-b border-brand-surface/60">
         <RouteLine variant="about">
           
-          {/* 1. Founding-Year Opener (Generous Editorial Breathing Room) */}
+          {/* 1. Founding-Year Opener */}
           <div className="py-20 md:py-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -107,7 +102,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
         </RouteLine>
       </section>
 
-      {/* 3. Mission & Vision as a Diptych (Tightened Spacing) */}
+      {/* 3. Mission & Vision as a Diptych */}
       <section className="border-t border-brand-surface/80">
         
         {/* Mission (Base Neutral Background) */}
@@ -160,7 +155,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
 
       </section>
 
-      {/* 4. Core Values as an Authored Numbered List (Tightened Spacing) */}
+      {/* 4. Core Values as an Authored Numbered List */}
       <section className="relative overflow-hidden border-t border-brand-surface/80 bg-brand-bg py-12 md:py-16">
         <RouteLine variant="packages">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -198,32 +193,95 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
         </RouteLine>
       </section>
 
-      {/* 5. Leadership as a Masthead Credit Line (Distinct Darker Neutral Background & Tightened Spacing) */}
-      <section className="py-12 md:py-16 bg-[#EBE5DA] border-t border-b border-brand-charcoal/10 relative overflow-hidden">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 5. Leadership & Management — Full Editorial Magazine Profile Spreads */}
+      <section className="py-16 md:py-24 bg-brand-bg border-t border-brand-surface/80 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-brand-charcoal tracking-tight mb-6">
-            Leadership &amp; Management
-          </h2>
+          {/* Section Header */}
+          <div className="mb-12 md:mb-16 text-center max-w-2xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="text-xs font-semibold text-brand-green uppercase tracking-widest mb-2"
+            >
+              Leadership &amp; Management
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-brand-charcoal tracking-tight"
+            >
+              Guided by Decades of Industry Mastery
+            </motion.h2>
+          </div>
 
-          <div className="space-y-4 sm:space-y-5">
-            {leadership.map((person, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
+          {/* Leaders Profile Spreads */}
+          <div className="space-y-20 md:space-y-28">
+            {COMPANY_LEADERSHIP_PROFILES.map((leader, leaderIdx) => (
+              <motion.article
+                key={leader.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: idx * 0.08 }}
-                className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3 text-base sm:text-lg font-body"
+                transition={{ duration: 0.6 }}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start ${
+                  leaderIdx > 0 ? 'pt-16 md:pt-24 border-t border-brand-surface/80' : ''
+                }`}
               >
-                <span className="font-display font-bold text-brand-charcoal">
-                  {person.name}
-                </span>
-                <span className="hidden sm:inline text-brand-charcoal/40">&mdash;</span>
-                <span className="text-brand-charcoal/70 text-sm sm:text-base">
-                  {person.role}
-                </span>
-              </motion.div>
+                {/* Photo Column */}
+                <div className="lg:col-span-5 lg:sticky lg:top-28">
+                  <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-brand-surface/60 border border-brand-surface shadow-soft group">
+                    <img
+                      src={leader.photo}
+                      alt={`${leader.name} — ${leader.role}`}
+                      className="w-full h-auto object-cover object-top transition-transform duration-700 group-hover:scale-103 filter contrast-[1.02]"
+                      loading="lazy"
+                    />
+                    {/* Subtle warm vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Text Column — Typography-led Magazine Flow */}
+                <div className="lg:col-span-7 space-y-6">
+                  <div>
+                    <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-brand-charcoal tracking-tight">
+                      {leader.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-semibold tracking-widest text-brand-green uppercase font-body mt-1">
+                      {leader.role}
+                    </p>
+                  </div>
+
+                  {/* Flowing Bio with Mid-Profile Pull-Quote */}
+                  <div className="space-y-5 text-base sm:text-lg text-brand-charcoal/85 font-body leading-relaxed">
+                    {/* First Paragraphs */}
+                    {leader.bio.slice(0, 2).map((paragraph, pIdx) => (
+                      <p key={pIdx}>
+                        {paragraph}
+                      </p>
+                    ))}
+
+                    {/* Mid-Profile Editorial Pull-Quote Callout */}
+                    <blockquote className="my-8 py-5 px-6 border-l-2 border-brand-green bg-brand-light/50 rounded-r-2xl">
+                      <p className="font-display italic text-lg sm:text-xl md:text-2xl text-brand-charcoal font-semibold leading-snug">
+                        &ldquo;{leader.pullQuote}&rdquo;
+                      </p>
+                    </blockquote>
+
+                    {/* Remaining Paragraphs */}
+                    {leader.bio.slice(2).map((paragraph, pIdx) => (
+                      <p key={pIdx + 2}>
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </motion.article>
             ))}
           </div>
 
@@ -231,7 +289,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
       </section>
 
       {/* 6. Facts Strip (Thin, quiet, footer-style bar) */}
-      <section className="py-5 bg-white border-b border-brand-surface text-xs sm:text-sm text-brand-muted font-body">
+      <section className="py-5 bg-white border-y border-brand-surface text-xs sm:text-sm text-brand-muted font-body">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
           <span>Founded 2011</span>
           <span className="hidden md:inline text-brand-surface">&bull;</span>
@@ -241,7 +299,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* 7. Closing CTA Band (Tightened Spacing) */}
+      {/* 7. Closing CTA Band */}
       <section className="relative py-14 md:py-20 bg-brand-dark text-white overflow-hidden text-center">
         <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">

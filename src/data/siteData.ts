@@ -1,4 +1,4 @@
-import { CompanyDetails, DestinationItem, PackageItem, ServiceItem, StatItem, TestimonialItem } from '../types';
+import { CompanyDetails, DestinationItem, PackageItem, ServiceItem, StatItem, TestimonialItem, LeadershipProfile } from '../types';
 
 export const COMPANY_INFO: CompanyDetails = {
   name: "Excel Landsafe Travels and Tours Ltd",
@@ -417,6 +417,36 @@ export const COMPANY_LEADERSHIP: LeadershipItem[] = [
     name: "Babatunde Leo Dada",
     role: "Managing Partner",
     credentials: "Strategic Advisory & Corporate Partnerships"
+  }
+];
+
+export const COMPANY_LEADERSHIP_PROFILES: LeadershipProfile[] = [
+  {
+    name: "Oluwayomi Dada",
+    role: "Managing Director",
+    photo: "/images/leadership-oluwayomi-dada.png",
+    pullQuote: "Her strategic direction has not only expanded the company's market footprint but has also positioned it as a forward-thinking player in a rapidly changing industry.",
+    bio: [
+      "Oluwayomi Dada is a visionary business leader and Managing Director of Excel Landsafe Travel & Tours Ltd., bringing over two decades of strategic leadership, operational excellence, and innovation to the travel and tourism industry. With more than 24 years of professional experience spanning travel, tourism, and hospitality, she has built a strong reputation for transforming customer experiences and driving sustainable business growth.",
+      "Under her leadership, Excel Landsafe Travel & Tours Ltd. has evolved into a trusted and dynamic travel brand known for its commitment to excellence, reliability, and client satisfaction. Her strategic direction has not only expanded the company's market footprint but has also positioned it as a forward-thinking player in a rapidly changing industry.",
+      "Oluwayomi's educational background reflects her dedication to continuous learning and professional development. She holds a Bachelor's degree in Business Administration from Caleb University, Imota, Lagos State, and a Master's degree in Entrepreneurship from Nexford University, Washington. Complementing her formal education are globally recognized certifications in travel management, including IATA Foundation and IATA Management Level qualifications, which further demonstrate her deep industry knowledge and operational expertise.",
+      "In her pursuit of leadership excellence, Oluwayomi has completed executive education programs from top-tier institutions, including the Management Acceleration Program at Lagos Business School and Managing the Company of the Future from the University of London. These programs have sharpened her strategic insight and enhanced her ability to lead organizations in today's fast-paced, technology-driven environment.",
+      "Oluwayomi's leadership is distinguished by her focus on strategic foresight, innovation, and team empowerment. She cultivates a high-performance culture built on collaboration, adaptability, and a relentless commitment to continuous improvement. Her hands-on approach to leadership ensures that every aspect of the business aligns with the company's mission to deliver high-quality, personalized travel experiences to individual and corporate clients.",
+      "Throughout her career, she has successfully led complex projects, developed high-performing teams, and navigated the business through various industry shifts. Her strong understanding of both local and international markets gives her a unique advantage in crafting tailored travel solutions that exceed client expectations.",
+      "As a recognized leader in her field, Oluwayomi Dada continues to influence and advance the future of travel and tourism across Nigeria and beyond. Her strategic vision and unwavering commitment to excellence remain key drivers behind Excel Landsafe's continued growth and its reputation for transformative ideas and forward-thinking strategies."
+    ]
+  },
+  {
+    name: "Babatunde Leo Dada",
+    role: "Managing Partner",
+    photo: "/images/leadership-babatunde-dada.png",
+    pullQuote: "Known for his integrity, experience, and unwavering dedication, Babatunde Dada plays a vital role in sustaining the company's reputation for quality service and dependable travel solutions.",
+    bio: [
+      "Babatunde Leo Dada serves as the Managing Partner of Excel Landsafe Travels & Tours Ltd., bringing over 25 years of extensive experience in the travel and tourism industry. His deep industry insight, operational expertise, and strategic support have been instrumental in driving the company's growth and long-term success.",
+      "He holds a Bachelor's degree in Biblical Studies and Pastoral Theology as well as a Master's degree in Leadership from Life Theological Seminary, Ikorodu. In addition to his academic achievements, Babatunde has earned several professional certifications, including a Nigerian Airways Certification and a Diploma in Risk Management, further solidifying his diverse skill set and leadership capacity.",
+      "Babatunde's professional journey is marked by a consistent track record of excellence and reliability. His comprehensive understanding of travel operations, combined with a commitment to ethical leadership and sound decision-making, has made him a respected figure within the industry. His contributions continue to provide strong strategic direction and operational backing to Excel Landsafe Travels & Tours Ltd.",
+      "Known for his integrity, experience, and unwavering dedication, Babatunde Dada plays a vital role in sustaining the company's reputation for quality service and dependable travel solutions."
+    ]
   }
 ];
 

@@ -74,3 +74,11 @@ export interface PackageItem {
   finePrint?: string;
   popular?: boolean;
 }
+
+export interface LeadershipProfile {
+  name: string;
+  role: string;
+  photo: string;
+  pullQuote: string;
+  bio: string[];
+}
