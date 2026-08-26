@@ -74,7 +74,7 @@ export const DestinationDetailModal: React.FC<DestinationDetailModalProps> = ({
           <div className="p-6 sm:p-8 space-y-6">
             
             <p className="text-base text-brand-charcoal/90 font-body leading-relaxed">
-              {destination.tagline} Experience bespoke 5-star accommodation, guided private tours, and complete end-to-end visa assistance handled by {COMPANY_INFO.name}.
+              {destination.tagline} Experience premium 5-star accommodation, guided private tours, and complete end-to-end visa assistance handled by {COMPANY_INFO.name}.
             </p>
 
             {/* Key Inclusions */}

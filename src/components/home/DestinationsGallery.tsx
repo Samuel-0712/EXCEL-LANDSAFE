@@ -12,7 +12,7 @@ interface DestinationsGalleryProps {
 export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSelectDestination }) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const categories = ['All', 'Luxury Resort', 'Visa Hotspot', 'City Break', 'Safari & Adventure', 'Cruise Voyage'];
+  const categories = ['All', 'Luxury Resort', 'City Break', 'Safari & Adventure', 'Cultural Heritage', 'Cruise Voyage'];
 
   const filteredDestinations = activeCategory === 'All' 
     ? DESTINATIONS_DATA 

@@ -10,28 +10,28 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
   const coreValues = [
-    { 
-      num: '01', 
+    {
+      num: '01',
       title: 'Commitment to Excellence',
       description: 'Every detail handled with precision and care'
     },
-    { 
-      num: '02', 
+    {
+      num: '02',
       title: 'Customer-Centric Approach',
       description: 'Your journey, planned around your needs'
     },
-    { 
-      num: '03', 
+    {
+      num: '03',
       title: 'Continuous Learning and Growth',
       description: 'Always improving how we serve you'
     },
-    { 
-      num: '04', 
+    {
+      num: '04',
       title: 'Integrity and Transparency',
       description: 'Honest advice, no hidden surprises'
     },
-    { 
-      num: '05', 
+    {
+      num: '05',
       title: 'Team Spirit',
       description: 'A dedicated team working as one for you'
     },
@@ -43,7 +43,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
       {/* Part 1: Opener & Story Section with RouteLine */}
       <section className="relative overflow-hidden border-b border-brand-surface/60">
         <RouteLine variant="about">
-          
+
           {/* 1. Founding-Year Opener */}
           <div className="py-20 md:py-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -104,7 +104,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
 
       {/* 3. Mission & Vision as a Diptych */}
       <section className="border-t border-brand-surface/80">
-        
+
         {/* Mission (Base Neutral Background) */}
         <div className="py-12 md:py-16 bg-brand-bg">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2.5">
@@ -193,99 +193,93 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
         </RouteLine>
       </section>
 
-      {/* 5. Leadership & Management — Full Editorial Magazine Profile Spreads */}
-      <section className="py-16 md:py-24 bg-brand-bg border-t border-brand-surface/80 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Section Header */}
-          <div className="mb-12 md:mb-16 text-center max-w-2xl mx-auto">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="text-xs font-semibold text-brand-green uppercase tracking-widest mb-2"
-            >
-              Leadership &amp; Management
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-brand-charcoal tracking-tight"
-            >
-              Guided by Decades of Industry Mastery
-            </motion.h2>
-          </div>
+      {/* 5. Leadership & Management — Full Editorial Magazine Profile Spreads (Distinct Warm Neutral Shade #EBE5DA) */}
+      <section className="relative overflow-hidden border-t border-b border-brand-charcoal/10 bg-[#EBE5DA] py-16 md:py-24">
 
-          {/* Leaders Profile Spreads */}
-          <div className="space-y-20 md:space-y-28">
-            {COMPANY_LEADERSHIP_PROFILES.map((leader, leaderIdx) => (
-              <motion.article
-                key={leader.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start ${
-                  leaderIdx > 0 ? 'pt-16 md:pt-24 border-t border-brand-surface/80' : ''
-                }`}
-              >
-                {/* Photo Column */}
-                <div className="lg:col-span-5 lg:sticky lg:top-28">
-                  <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-brand-surface/60 border border-brand-surface shadow-soft group">
-                    <img
-                      src={leader.photo}
-                      alt={`${leader.name} — ${leader.role}`}
-                      className="w-full h-auto object-cover object-top transition-transform duration-700 group-hover:scale-103 filter contrast-[1.02]"
-                      loading="lazy"
-                    />
-                    {/* Subtle warm vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-40 pointer-events-none" />
-                  </div>
-                </div>
-
-                {/* Text Column — Typography-led Magazine Flow */}
-                <div className="lg:col-span-7 space-y-6">
-                  <div>
-                    <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-brand-charcoal tracking-tight">
-                      {leader.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-semibold tracking-widest text-brand-green uppercase font-body mt-1">
-                      {leader.role}
-                    </p>
-                  </div>
-
-                  {/* Flowing Bio with Mid-Profile Pull-Quote */}
-                  <div className="space-y-5 text-base sm:text-lg text-brand-charcoal/85 font-body leading-relaxed">
-                    {/* First Paragraphs */}
-                    {leader.bio.slice(0, 2).map((paragraph, pIdx) => (
-                      <p key={pIdx}>
-                        {paragraph}
-                      </p>
-                    ))}
-
-                    {/* Mid-Profile Editorial Pull-Quote Callout */}
-                    <blockquote className="my-8 py-5 px-6 border-l-2 border-brand-green bg-brand-light/50 rounded-r-2xl">
-                      <p className="font-display italic text-lg sm:text-xl md:text-2xl text-brand-charcoal font-semibold leading-snug">
-                        &ldquo;{leader.pullQuote}&rdquo;
-                      </p>
-                    </blockquote>
-
-                    {/* Remaining Paragraphs */}
-                    {leader.bio.slice(2).map((paragraph, pIdx) => (
-                      <p key={pIdx + 2}>
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-
+        {/* Section Header */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 md:mb-16 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-brand-charcoal tracking-tight max-w-2xl mx-auto"
+          >
+            Guided by Decades of Industry Mastery
+          </motion.h2>
         </div>
+
+        {/* Leaders Profile Spreads - Full Width RouteLines reaching screen edges */}
+        <div className="space-y-20 md:space-y-28">
+          {COMPANY_LEADERSHIP_PROFILES.map((leader, leaderIdx) => (
+            <RouteLine
+              key={leader.name}
+              variant={leaderIdx === 0 ? "about" : "packages"}
+              className={`w-full ${leaderIdx > 0 ? "pt-16 md:pt-24 border-t border-brand-charcoal/10" : ""}`}
+            >
+              <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.article
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start"
+                >
+                  {/* Photo Column */}
+                  <div className="lg:col-span-5 lg:sticky lg:top-28">
+                    <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#E2DBD0] border border-brand-charcoal/10 shadow-soft group">
+                      <img
+                        src={leader.photo}
+                        alt={`${leader.name} — ${leader.role}`}
+                        className="w-full h-auto object-cover object-top transition-transform duration-700 group-hover:scale-103 filter contrast-[1.02]"
+                        loading="lazy"
+                      />
+                      {/* Subtle warm vignette */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* Text Column — Typography-led Magazine Flow */}
+                  <div className="lg:col-span-7 space-y-6">
+                    <div>
+                      <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-brand-charcoal tracking-tight">
+                        {leader.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm font-semibold tracking-widest text-brand-green uppercase font-body mt-1">
+                        {leader.role}
+                      </p>
+                    </div>
+
+                    {/* Flowing Bio with Mid-Profile Pull-Quote */}
+                    <div className="space-y-5 text-base sm:text-lg text-brand-charcoal/85 font-body leading-relaxed">
+                      {/* First Paragraphs */}
+                      {leader.bio.slice(0, 2).map((paragraph, pIdx) => (
+                        <p key={pIdx}>
+                          {paragraph}
+                        </p>
+                      ))}
+
+                      {/* Mid-Profile Editorial Pull-Quote Callout */}
+                      <blockquote className="my-8 py-5 px-6 border-l-2 border-brand-green bg-white/60 rounded-r-2xl shadow-xs">
+                        <p className="font-display italic text-lg sm:text-xl md:text-2xl text-brand-charcoal font-semibold leading-snug">
+                          &ldquo;{leader.pullQuote}&rdquo;
+                        </p>
+                      </blockquote>
+
+                      {/* Remaining Paragraphs */}
+                      {leader.bio.slice(2).map((paragraph, pIdx) => (
+                        <p key={pIdx + 2}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              </div>
+            </RouteLine>
+          ))}
+        </div>
+
       </section>
 
       {/* 6. Facts Strip (Thin, quiet, footer-style bar) */}

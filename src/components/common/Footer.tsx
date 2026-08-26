@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BrandLogo } from './CustomAssets';
 import { COMPANY_INFO } from '../../data/siteData';
-import { Phone, Mail, Instagram, MapPin, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { Phone, Mail, Instagram, Linkedin, MapPin, ArrowUpRight, MessageSquare } from 'lucide-react';
 
 interface FooterProps {
   onOpenLegal?: (type: 'privacy' | 'terms') => void;
@@ -35,6 +35,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
+              </a>
+              <a 
+                href={COMPANY_INFO.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-brand-green hover:border-brand-green/50 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
               </a>
               <a 
                 href={`https://wa.me/${COMPANY_INFO.whatsappRaw}`}
@@ -95,7 +104,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
             <ul className="space-y-2.5 text-sm text-white/70">
               <li className="hover:text-brand-green transition-colors">Schengen & UK Visa Advisory</li>
               <li className="hover:text-brand-green transition-colors">US & Canada Visa Assistance</li>
-              <li className="hover:text-brand-green transition-colors">Bespoke Luxury Honeymoons</li>
+              <li className="hover:text-brand-green transition-colors">Tailored Luxury Honeymoons</li>
               <li className="hover:text-brand-green transition-colors">Corporate Travel & VIP Concierge</li>
               <li className="hover:text-brand-green transition-colors">Flight Seat Upgrades & Transfers</li>
             </ul>

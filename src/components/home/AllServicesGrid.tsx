@@ -21,7 +21,7 @@ export const AllServicesGrid: React.FC<AllServicesGridProps> = ({ onSelectServic
       category: "Trip Experiences",
       badge: "Curated Escapes",
       services: [
-        { name: "Tour Packaging", desc: "Bespoke private & group luxury tour itineraries", icon: Compass },
+        { name: "Tour Packaging", desc: "Tailored private & group luxury tour itineraries", icon: Compass },
         { name: "Cruise Bookings", desc: "Luxury ocean & river cruise voyage packaging", icon: Ship }
       ]
     },

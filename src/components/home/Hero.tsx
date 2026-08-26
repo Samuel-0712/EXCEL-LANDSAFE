@@ -16,17 +16,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
       {/* Background Imagery with Ken-Burns animation */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85" 
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=90" 
           alt="Luxury travel scenery" 
-          className="w-full h-full object-cover animate-ken-burns scale-105 filter brightness-90"
+          className="w-full h-full object-cover animate-ken-burns scale-105 filter brightness-105 contrast-[1.05] saturate-[1.1]"
         />
         
-        {/* Layered Gradient Overlays for Text Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-brand-charcoal/60 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal/80 via-transparent to-brand-charcoal/40" />
-        
-        {/* Subtle Ambient Dot Pattern Overlay */}
-        <DotPatternBackground opacity={0.08} />
+        {/* Crisp, Lightweight Gradient Overlays for High Clarity & Text Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/30 to-black/35" />
+        <div className="absolute inset-0 bg-black/15" />
       </div>
 
       {/* Content Container */}
@@ -41,11 +38,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none mb-6"
         >
-          <span className="block text-white/95 drop-shadow-sm">Make Your</span>
-          <span className="block font-accent italic font-normal text-brand-green text-6xl sm:text-7xl md:text-8xl lg:text-9xl my-2 drop-shadow-[0_4px_30px_rgba(74,124,60,0.6)]">
+          <span className="block text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.6)]">Make Your</span>
+          <span className="block font-accent italic font-normal text-[#66C047] text-6xl sm:text-7xl md:text-8xl lg:text-9xl my-2 drop-shadow-[0_4px_24px_rgba(0,0,0,0.7)]">
             Extraordinary
           </span>
-          <span className="block text-white/95 drop-shadow-sm">Journeys Seamless</span>
+          <span className="block text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.6)]">Journeys Seamless</span>
         </motion.h1>
 
         {/* Sub-headline Copy */}
@@ -55,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenInquiry }) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="max-w-2xl mx-auto font-body text-base sm:text-lg md:text-xl text-white/80 font-normal leading-relaxed mb-10"
         >
-          Nigeria’s premier travel advisory for global visa approvals, curated luxury honeymoons, bespoke holidays, and VIP flight services.
+          Nigeria’s premier travel advisory for global visa approvals, curated luxury honeymoons, tailored getaways, and VIP flight services.
         </motion.p>
 
         {/* CTA Button Group */}

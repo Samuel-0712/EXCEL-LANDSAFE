@@ -10,6 +10,7 @@ export const COMPANY_INFO: CompanyDetails = {
   email: "info@excellandsafe.com.ng",
   instagramHandle: "@excellandsafe_travel",
   instagramUrl: "https://www.instagram.com/excellandsafe_travel",
+  linkedinUrl: "https://www.linkedin.com/company/excel-landsafe-travel-and-tours/",
   address: "Lagos, Nigeria",
   hours: "Mon – Sat: 8:00 AM – 6:00 PM WAT"
 };
@@ -18,7 +19,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "visa-assistance",
     title: "Expert Visa Assistance",
-    tagline: "Hassle-free documentation and high-approval advisory",
+    tagline: "Hassle-Free Visa Consultation",
     description: "End-to-end guidance for Schengen, UK, US, Canada, UAE, and Asian visa applications with thorough document vetting and appointment scheduling.",
     iconName: "passport",
     popular: true,
@@ -33,7 +34,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "luxury-tours",
     title: "Curated Luxury Tours",
-    tagline: "Bespoke itineraries crafted for unforgettable journeys",
+    tagline: "Tailored itineraries crafted for unforgettable journeys",
     description: "From tranquil beach retreats in the Maldives to cultural escapes in Europe, we curate custom private and group holiday experiences.",
     iconName: "compass",
     popular: true,
@@ -141,7 +142,7 @@ export const DESTINATIONS_DATA: DestinationItem[] = [
     tagline: "Ultra-luxury ocean suites, island hopping, and fine dining at sea.",
     category: "Cruise Voyage",
     image: "/images/cruise-aerial.jpg",
-    highlightPrice: "Bespoke Cruise Package",
+    highlightPrice: "Curated Cruise Package",
     popular: true
   }
 ];
@@ -349,7 +350,7 @@ export const PACKAGES_DATA: PackageItem[] = [
 
 export const COMPANY_ABOUT_STORY = {
   headline: "Your Journey, Our Commitment!",
-  subheading: "A premier Nigerian travel management advisory founded on excellence, safety, and bespoke global experiences.",
+  subheading: "A premier Nigerian travel management advisory founded on excellence, safety, and personalized global experiences.",
   paragraphs: [
     "Excel Landsafe Travel and Tours Ltd. is a dynamic and innovative travel and tourism management company dedicated to providing a comprehensive array of travel services tailored to cater to the diverse needs and preferences of its clients. Our company prioritizes safety and commitment to excellence at every stage of its customers' trips, ensuring peace of mind and value for money.",
     "Additionally, it specializes in the packaging of unique and immersive travel experiences that showcase the excellence, culture, and diversity of destinations around the world. With a strong commitment to customer satisfaction and safety, we ensure that every journey is well-planned, hassle-free, and enriching."

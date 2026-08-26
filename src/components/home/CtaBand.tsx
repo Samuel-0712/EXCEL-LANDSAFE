@@ -31,7 +31,7 @@ export const CtaBand: React.FC<CtaBandProps> = ({ onOpenInquiry }) => {
           </h2>
 
           <p className="max-w-2xl mx-auto font-body text-base sm:text-lg text-white/80 leading-relaxed">
-            Reach out directly to our senior travel advisors for visa guidance, custom flight quotes, or bespoke holiday planning.
+            Reach out directly to our senior travel advisors for visa guidance, custom flight quotes, or tailored holiday planning.
           </p>
 
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">

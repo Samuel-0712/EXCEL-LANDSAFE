@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useId } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 interface RouteLineProps {
   children?: React.ReactNode;
   className?: string;
-  variant?: 'services' | 'destinations' | 'packages' | 'about' | 'general';
+  variant?: 'services' | 'destinations' | 'packages' | 'about' | 'leadership' | 'general';
 }
 
 export const RouteLine: React.FC<RouteLineProps> = ({ 
@@ -13,20 +13,26 @@ export const RouteLine: React.FC<RouteLineProps> = ({
   variant = 'services' 
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const gradientId = useId();
 
-  // Synchronized directly with visible viewport scroll:
-  // Starts drawing when the section top enters 85% of viewport,
-  // finishes drawing smoothly as the user scrolls through to the bottom.
+  // Snappy, direct scroll tracking:
+  // Starts the moment the section enters the screen (start 85%)
+  // and keeps drawing briskly right as the user scrolls through the content.
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 85%', 'end 35%'],
+    offset: ['start 85%', 'end 20%'],
   });
 
-  // 1-to-1 scroll synchronization so the user actively sees the line draw as they scroll
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.05, 0.95, 1], [0.6, 1, 1, 0.6]);
+  // Smooth, immediate spring physics so the line moves dynamically with the user's scroll speed
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 280,
+    damping: 32,
+    restDelta: 0.001,
+  });
 
-  // Continuous organic journey paths tailored for each section
+  const pathLength = useTransform(smoothProgress, [0, 1], [0, 1]);
+
+  let viewBox = "0 0 1200 800";
   let pathD = `M -40,100
     C 240,80 320,240 520,220
     C 720,200 800,360 620,420
@@ -55,44 +61,54 @@ export const RouteLine: React.FC<RouteLineProps> = ({
       C 500,480 420,340 600,280
       C 820,220 960,400 1060,500
       C 1160,600 1180,660 1260,740`;
+  } else if (variant === 'leadership') {
+    viewBox = "0 0 1200 2200";
+    pathD = `M -40,80
+      C 260,60 380,200 580,160
+      C 780,120 880,320 720,440
+      C 560,560 440,420 560,340
+      C 760,240 980,460 1080,640
+      C 1180,820 960,960 700,900
+      C 440,840 340,1060 540,1180
+      C 740,1300 960,1220 1060,1380
+      C 1160,1540 980,1700 720,1660
+      C 460,1620 340,1820 540,1960
+      C 740,2100 1040,2020 1260,2160`;
   }
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       {/* Background Journey Route Line SVG */}
       <svg
-        viewBox="0 0 1200 800"
+        viewBox={viewBox}
         preserveAspectRatio="none"
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
         aria-hidden="true"
       >
-        <defs>
-          <linearGradient id={`routeGradient-${variant}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#4A7C3C" stopOpacity="0.30" />
-            <stop offset="50%" stopColor="#4A7C3C" stopOpacity="0.65" />
-            <stop offset="100%" stopColor="#4A7C3C" stopOpacity="0.45" />
-          </linearGradient>
-        </defs>
-
-        {/* Ambient Faded Base Trace */}
+        {/* Solid Uniform Faded Base Trace */}
         <path
           d={pathD}
           fill="none"
           stroke="#4A7C3C"
-          strokeOpacity="0.14"
-          strokeWidth="2.5"
-          strokeDasharray="8 8"
+          strokeOpacity="0.18"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+          strokeDasharray="7 7"
           strokeLinecap="round"
+          strokeLinejoin="round"
         />
 
-        {/* Dynamic Scroll-Drawn Route Path with Higher Visibility */}
+        {/* Dynamic Scroll-Drawn Route Path - 100% solid & uniform thickness across the entire line */}
         <motion.path
           d={pathD}
           fill="none"
-          stroke={`url(#routeGradient-${variant})`}
-          strokeWidth="3.5"
+          stroke="#4A7C3C"
+          strokeOpacity="0.65"
+          strokeWidth="2.75"
+          vectorEffect="non-scaling-stroke"
           strokeLinecap="round"
-          style={{ pathLength, opacity }}
+          strokeLinejoin="round"
+          style={{ pathLength }}
         />
       </svg>
 

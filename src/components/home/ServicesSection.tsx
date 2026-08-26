@@ -23,7 +23,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
             Tailored Travel Solutions Crafted to Perfection
           </h2>
           <p className="mt-4 text-base sm:text-lg text-brand-muted font-body leading-relaxed">
-            Whether you need urgent visa documentation, a bespoke honeymoon itinerary, or MICE event logistics, we take care of every detail.
+            Whether you need urgent visa consultation, a tailored honeymoon itinerary, or MICE event logistics, we take care of every detail.
           </p>
         </div>
 

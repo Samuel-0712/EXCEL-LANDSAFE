@@ -14,7 +14,7 @@ export interface DestinationItem {
   name: string;
   country: string;
   tagline: string;
-  category: 'Luxury Resort' | 'Cultural Heritage' | 'City Break' | 'Safari & Adventure' | 'Visa Hotspot' | 'Cruise Voyage';
+  category: 'Luxury Resort' | 'Cultural Heritage' | 'City Break' | 'Safari & Adventure' | 'Cruise Voyage';
   image: string;
   highlightPrice?: string;
   popular?: boolean;
@@ -56,6 +56,7 @@ export interface CompanyDetails {
   email: string;
   instagramHandle: string;
   instagramUrl: string;
+  linkedinUrl: string;
   address: string;
   hours: string;
 }
