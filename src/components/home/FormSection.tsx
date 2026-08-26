@@ -34,17 +34,24 @@ export const FormSection: React.FC = () => {
       message: message || 'Direct website inquiry'
     };
 
-    const { error } = await submitInquiryToSupabase(payload);
+    // Always attempt email notification in parallel
+    const emailPromise = sendAllLeadNotifications(payload).catch(err => {
+      console.error("Async email dispatch error:", err);
+      return { success: false, error: err };
+    });
+
+    const { error: dbError } = await submitInquiryToSupabase(payload);
+    const emailResult = await emailPromise;
     setLoading(false);
 
-    if (error) {
-      console.error("Form submit error:", error);
-      const detail = error.message || error.details || 'Submission error. Please try again.';
-      setErrorMsg(`Submission issue: ${detail}`);
-    } else {
+    const emailSuccess = emailResult && 'adminRes' in emailResult && emailResult.adminRes.status === 'fulfilled';
+
+    // If either DB or Email succeeded, present success to the user
+    if (!dbError || emailSuccess) {
       setSubmitted(true);
-      // Trigger admin alert & client auto-reply asynchronously in background
-      sendAllLeadNotifications(payload).catch(err => console.error("Async email dispatch error:", err));
+    } else {
+      console.error("Form submit error:", dbError);
+      setErrorMsg("We experienced a temporary connection issue. Please click below to connect directly with our advisor on WhatsApp.");
     }
   };
 

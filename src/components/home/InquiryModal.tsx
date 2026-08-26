@@ -54,16 +54,24 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
       message: message || `Inquiry regarding ${service}${destination ? ' for ' + destination : ''}`
     };
 
-    const { error } = await submitInquiryToSupabase(payload);
+    // Always attempt email notification in parallel
+    const emailPromise = sendAllLeadNotifications(payload).catch(err => {
+      console.error("Async modal email error:", err);
+      return { success: false, error: err };
+    });
+
+    const { error: dbError } = await submitInquiryToSupabase(payload);
+    const emailResult = await emailPromise;
     setLoading(false);
 
-    if (error) {
-      console.error("Modal submit error:", error);
-      const detail = error.message || error.details || 'Submission error. Please try again.';
-      setErrorMsg(`Submission issue: ${detail}`);
-    } else {
+    const emailSuccess = emailResult && 'adminRes' in emailResult && emailResult.adminRes.status === 'fulfilled';
+
+    // If either DB or Email succeeded, present success to the user
+    if (!dbError || emailSuccess) {
       setSubmitted(true);
-      sendAllLeadNotifications(payload).catch(err => console.error("Async modal email error:", err));
+    } else {
+      console.error("Modal submit error:", dbError);
+      setErrorMsg("We experienced a temporary connection issue. Please click below to connect directly with our advisor on WhatsApp.");
     }
   };
 
