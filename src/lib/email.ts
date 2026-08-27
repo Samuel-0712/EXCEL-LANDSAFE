@@ -27,6 +27,9 @@ export async function sendLeadEmailNotification(payload: LeadEmailPayload) {
   const rawPhone = payload.phone.replace(/[^+\d]/g, '');
 
   try {
+    const fromAddress = import.meta.env.VITE_SENDER_EMAIL || 'Excel Landsafe Leads <onboarding@resend.dev>';
+    const adminRecipients = [COMPANY_INFO.email, 'samuelleodada@gmail.com'];
+
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -34,8 +37,8 @@ export async function sendLeadEmailNotification(payload: LeadEmailPayload) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Excel Landsafe Leads <onboarding@resend.dev>',
-        to: ['samuelleodada@gmail.com'],
+        from: fromAddress,
+        to: adminRecipients,
         subject: `New Lead Inquiry: ${payload.fullName} (${submissionTimestamp.split(',')[0]})`,
         html: `
           <div style="font-family: Arial, sans-serif; padding: 24px; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 16px; background-color: #ffffff; margin: 0 auto;">
@@ -131,6 +134,9 @@ export async function sendClientAutoConfirmationEmail(payload: LeadEmailPayload)
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent(`Hello Excel Landsafe, I just submitted an inquiry on your website.`)}`;
 
   try {
+    const fromAddress = import.meta.env.VITE_SENDER_EMAIL || 'Excel Landsafe Travels <onboarding@resend.dev>';
+    const clientRecipient = payload.email || 'samuelleodada@gmail.com';
+
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -138,9 +144,8 @@ export async function sendClientAutoConfirmationEmail(payload: LeadEmailPayload)
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Excel Landsafe Travels <onboarding@resend.dev>',
-        // Note: In Resend sandbox mode without verified custom domain, default target is account email
-        to: ['samuelleodada@gmail.com'],
+        from: fromAddress,
+        to: [clientRecipient],
         subject: `We've received your inquiry, ${firstName}`,
         html: `
           <div style="font-family: Arial, sans-serif; padding: 24px; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 16px; background-color: #ffffff; margin: 0 auto;">
