@@ -27,7 +27,7 @@ export async function sendLeadEmailNotification(payload: LeadEmailPayload) {
   const rawPhone = payload.phone.replace(/[^+\d]/g, '');
 
   try {
-    const fromAddress = import.meta.env.VITE_SENDER_EMAIL || 'Excel Landsafe Leads <onboarding@resend.dev>';
+    const fromAddress = import.meta.env.VITE_SENDER_EMAIL || 'Excel Landsafe <info@excellandsafe.com.ng>';
     const adminRecipients = [COMPANY_INFO.email, 'samuelleodada@gmail.com'];
 
     const res = await fetch('https://api.resend.com/emails', {
@@ -134,7 +134,7 @@ export async function sendClientAutoConfirmationEmail(payload: LeadEmailPayload)
   const whatsappUrl = `https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent(`Hello Excel Landsafe, I just submitted an inquiry on your website.`)}`;
 
   try {
-    const fromAddress = import.meta.env.VITE_SENDER_EMAIL || 'Excel Landsafe Travels <onboarding@resend.dev>';
+    const fromAddress = import.meta.env.VITE_SENDER_EMAIL || 'Excel Landsafe <info@excellandsafe.com.ng>';
     const clientRecipient = payload.email || 'samuelleodada@gmail.com';
 
     const res = await fetch('https://api.resend.com/emails', {
