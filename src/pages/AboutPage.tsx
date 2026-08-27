@@ -53,11 +53,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
               className="space-y-4 text-center max-w-3xl mx-auto"
             >
               <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-charcoal tracking-tight leading-[1.2] sm:leading-[1.15]">
-                Since{' '}
-                <span className="font-accent italic text-brand-green text-5xl sm:text-7xl md:text-8xl align-baseline inline-block px-1">
-                  2011
+                Your Journey.{' '}
+                <span className="font-accent italic text-brand-green text-4xl sm:text-6xl md:text-7xl lg:text-8xl align-baseline inline-block px-1">
+                  Our Commitment.
                 </span>
-                , we&apos;ve been making journeys seamless.
               </h1>
 
               <p className="text-xs sm:text-sm font-semibold tracking-widest text-brand-muted uppercase font-body pt-2">
