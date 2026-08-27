@@ -350,7 +350,7 @@ export const PACKAGES_DATA: PackageItem[] = [
 
 export const COMPANY_ABOUT_STORY = {
   headline: "Your Journey, Our Commitment!",
-  subheading: "A premier Nigerian travel management advisory founded on excellence, safety, and personalized global experiences.",
+  subheading: "A premier Nigerian travel management advisory built on excellence, safety, and personalized global experiences.",
   paragraphs: [
     "Excel Landsafe Travel and Tours Ltd. is a dynamic and innovative travel and tourism management company dedicated to providing a comprehensive array of travel services tailored to cater to the diverse needs and preferences of its clients. Our company prioritizes safety and commitment to excellence at every stage of its customers' trips, ensuring peace of mind and value for money.",
     "Additionally, it specializes in the packaging of unique and immersive travel experiences that showcase the excellence, culture, and diversity of destinations around the world. With a strong commitment to customer satisfaction and safety, we ensure that every journey is well-planned, hassle-free, and enriching."
@@ -452,7 +452,7 @@ export const COMPANY_LEADERSHIP_PROFILES: LeadershipProfile[] = [
 ];
 
 export const COMPANY_CREDENTIALS_STRIP = {
-  founded: "Over a Decade of Operational Excellence",
+  founded: "Excellence & Integrity in Travel Management",
   address: "60 Allen Avenue, by Adeboye Sholanke Entrance Gate, Ikeja, Lagos, Nigeria",
   accreditations: "CAC Registered · Proud NANTA Member"
 };

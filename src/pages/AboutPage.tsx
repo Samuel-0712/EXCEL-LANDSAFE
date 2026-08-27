@@ -60,7 +60,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
               </h1>
 
               <p className="text-xs sm:text-sm font-semibold tracking-widest text-brand-muted uppercase font-body pt-2">
-                OVER A DECADE OF TRUSTED VISA ADVISORY &amp; LUXURY TRAVEL
+                TRUSTED VISA ADVISORY &amp; LUXURY TRAVEL MANAGEMENT
               </p>
             </motion.div>
           </div>
