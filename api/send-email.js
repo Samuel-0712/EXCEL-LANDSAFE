@@ -12,6 +12,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
+  let body = req.body;
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch (e) {
+      body = {};
+    }
+  }
+  const { fullName, email, phone, destination, message } = body || {};
+
   const apiKey = process.env.RESEND_API_KEY || process.env.VITE_RESEND_API_KEY || '';
   if (!apiKey) {
     console.error('RESEND_API_KEY is not configured on server');
