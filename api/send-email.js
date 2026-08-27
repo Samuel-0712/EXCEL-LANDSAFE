@@ -130,7 +130,7 @@ export default async function handler(req, res) {
                 <a href="https://wa.me/2348182681372" style="display: inline-block; background-color: #4A7C3C; color: #ffffff; padding: 12px 28px; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 14px;">Chat Directly on WhatsApp</a>
               </div>
               <div style="border-top: 1px solid #edf2f7; padding-top: 20px; font-size: 12px; color: #a0aec0; text-align: center;">
-                Excel Landsafe Travels & Tours • 2A, Ede Street, off Opebi Link Bridge, Maryland, Ikeja, Lagos<br/>
+                Excel Landsafe Travels & Tours • 60 Allen Avenue, by Adeboye Sholanke Entrance Gate, Ikeja, Lagos<br/>
                 Phone: +234 818 268 1372 • Email: info@excellandsafe.com.ng
               </div>
             </div>
