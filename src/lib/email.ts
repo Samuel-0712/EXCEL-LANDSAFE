@@ -209,6 +209,27 @@ export async function sendClientAutoConfirmationEmail(payload: LeadEmailPayload)
  * Dispatches both internal admin alert and client auto-confirmation email
  */
 export async function sendAllLeadNotifications(payload: LeadEmailPayload) {
+  try {
+    const apiRes = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (apiRes.ok) {
+      const data = await apiRes.json();
+      return {
+        adminRes: { status: 'fulfilled', value: data.adminRes } as PromiseSettledResult<any>,
+        clientRes: { status: 'fulfilled', value: data.clientRes } as PromiseSettledResult<any>
+      };
+    }
+  } catch (apiErr) {
+    console.warn("Serverless email endpoint error, falling back to direct dispatch:", apiErr);
+  }
+
+  // Fallback to direct client call if serverless endpoint is unreachable
   const [adminRes, clientRes] = await Promise.allSettled([
     sendLeadEmailNotification(payload),
     sendClientAutoConfirmationEmail(payload)
