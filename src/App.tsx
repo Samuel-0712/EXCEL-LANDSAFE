@@ -19,6 +19,7 @@ import { ScrollToTop } from './components/common/ScrollToTop';
 import { AboutPage } from './pages/AboutPage';
 import { DestinationItem } from './types';
 import { DESTINATIONS_DATA } from './data/siteData';
+import { Analytics } from '@vercel/analytics/react';
 
 function HomePage({
   onOpenInquiry,
@@ -141,6 +142,9 @@ export function AppContent() {
         type={legalType}
         onClose={() => setLegalType(null)}
       />
+
+      {/* Vercel Analytics Tracker */}
+      <Analytics />
 
     </div>
   );
