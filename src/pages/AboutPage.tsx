@@ -284,7 +284,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
       {/* 6. Facts Strip (Thin, quiet, footer-style bar) */}
       <section className="py-5 bg-white border-y border-brand-surface text-xs sm:text-sm text-brand-muted font-body">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
-          <span>Founded 2011</span>
+          <span>Trusted Travel Management</span>
           <span className="hidden md:inline text-brand-surface">&bull;</span>
           <span>60 Allen Avenue, by Adeboye Sholanke Entrance Gate, Ikeja, Lagos</span>
           <span className="hidden md:inline text-brand-surface">&bull;</span>

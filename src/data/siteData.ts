@@ -452,7 +452,7 @@ export const COMPANY_LEADERSHIP_PROFILES: LeadershipProfile[] = [
 ];
 
 export const COMPANY_CREDENTIALS_STRIP = {
-  founded: "Founded in 2011 · Over a Decade of Operational Excellence",
+  founded: "Over a Decade of Operational Excellence",
   address: "60 Allen Avenue, by Adeboye Sholanke Entrance Gate, Ikeja, Lagos, Nigeria",
   accreditations: "CAC Registered · Proud NANTA Member"
 };
