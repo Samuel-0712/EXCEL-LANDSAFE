@@ -167,22 +167,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
             </div>
 
             {/* Navigation Links */}
-            <div className="flex flex-col gap-3 py-6">
+            <div className="flex flex-col gap-2 py-6">
               {navItems.map((item) => {
-                const IconComponent = item.icon;
-
                 if (item.isRoute) {
                   return (
                     <Link
                       key={item.label}
                       to={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-4 text-xl font-display font-semibold text-brand-charcoal hover:text-brand-green transition-colors p-3 rounded-2xl hover:bg-brand-charcoal/5"
+                      className="text-2xl font-display font-semibold text-brand-charcoal hover:text-brand-green transition-colors py-2.5 px-3 rounded-xl hover:bg-brand-charcoal/5"
                     >
-                      <div className="w-11 h-11 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0">
-                        <IconComponent className="w-5 h-5" />
-                      </div>
-                      <span className="text-brand-charcoal font-semibold text-lg">{item.label}</span>
+                      <span>{item.label}</span>
                     </Link>
                   );
                 }
@@ -192,12 +187,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                     key={item.label}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-4 text-xl font-display font-semibold text-brand-charcoal hover:text-brand-green transition-colors p-3 rounded-2xl hover:bg-brand-charcoal/5"
+                    className="text-2xl font-display font-semibold text-brand-charcoal hover:text-brand-green transition-colors py-2.5 px-3 rounded-xl hover:bg-brand-charcoal/5"
                   >
-                    <div className="w-11 h-11 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0">
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    <span className="text-brand-charcoal font-semibold text-lg">{item.label}</span>
+                    <span>{item.label}</span>
                   </a>
                 );
               })}
