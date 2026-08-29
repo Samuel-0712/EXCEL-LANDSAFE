@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
         </div>
       </header>
 
-      {/* Full-Screen Mobile Drawer */}
+      {/* Full-Screen Mobile Drawer (Luxury White Aesthetic) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -149,25 +149,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-[#0F1714] text-white flex flex-col justify-between p-6 md:hidden overflow-y-auto"
-            style={{ backgroundColor: '#0F1714' }}
+            className="fixed inset-0 z-50 bg-[#FAF7F2] text-brand-charcoal flex flex-col justify-between p-6 md:hidden overflow-y-auto"
+            style={{ backgroundColor: '#FAF7F2' }}
           >
             {/* Drawer Header */}
-            <div className="flex items-center justify-between border-b border-white/15 pb-4">
+            <div className="flex items-center justify-between border-b border-brand-charcoal/10 pb-4">
               <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                <BrandLogo light={true} height={52} />
+                <BrandLogo light={false} height={52} />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
+                className="w-10 h-10 rounded-full bg-brand-charcoal/5 text-brand-charcoal flex items-center justify-center hover:bg-brand-charcoal/10 transition-colors"
                 aria-label="Close menu"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 text-brand-charcoal" />
               </button>
             </div>
 
             {/* Navigation Links */}
-            <div className="flex flex-col gap-5 py-6">
+            <div className="flex flex-col gap-3 py-6">
               {navItems.map((item) => {
                 const IconComponent = item.icon;
 
@@ -177,12 +177,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                       key={item.label}
                       to={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-4 text-xl font-display font-semibold text-white hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/5"
+                      className="flex items-center gap-4 text-xl font-display font-semibold text-brand-charcoal hover:text-brand-green transition-colors p-3 rounded-2xl hover:bg-brand-charcoal/5"
                     >
-                      <div className="w-10 h-10 rounded-full bg-brand-green/20 flex items-center justify-center text-brand-green shrink-0">
+                      <div className="w-11 h-11 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0">
                         <IconComponent className="w-5 h-5" />
                       </div>
-                      <span className="text-white font-medium">{item.label}</span>
+                      <span className="text-brand-charcoal font-semibold text-lg">{item.label}</span>
                     </Link>
                   );
                 }
@@ -192,22 +192,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                     key={item.label}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-4 text-xl font-display font-semibold text-white hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/5"
+                    className="flex items-center gap-4 text-xl font-display font-semibold text-brand-charcoal hover:text-brand-green transition-colors p-3 rounded-2xl hover:bg-brand-charcoal/5"
                   >
-                    <div className="w-10 h-10 rounded-full bg-brand-green/20 flex items-center justify-center text-brand-green shrink-0">
+                    <div className="w-11 h-11 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green shrink-0">
                       <IconComponent className="w-5 h-5" />
                     </div>
-                    <span className="text-white font-medium">{item.label}</span>
+                    <span className="text-brand-charcoal font-semibold text-lg">{item.label}</span>
                   </a>
                 );
               })}
             </div>
 
             {/* Drawer Footer Actions */}
-            <div className="border-t border-white/15 pt-5 flex flex-col gap-3">
+            <div className="border-t border-brand-charcoal/10 pt-5 flex flex-col gap-3">
               <Button
                 size="lg"
-                className="w-full"
+                className="w-full shadow-md"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenInquiry();
@@ -220,7 +220,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                 href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent('Hello Excel Landsafe Travels, I would like to inquire about your visa and tour services.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-full border border-brand-green bg-brand-green/15 text-center text-white font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-green transition-colors"
+                className="w-full py-3.5 rounded-full border-2 border-brand-green/40 bg-white text-center text-brand-charcoal font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-green hover:text-white hover:border-brand-green transition-all shadow-sm"
               >
                 <MessageSquare className="w-4 h-4 text-brand-green" />
                 <span>Chat on WhatsApp</span>
