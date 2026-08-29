@@ -149,23 +149,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-brand-charcoal/95 text-white flex flex-col justify-between p-6 md:hidden glass-nav"
+            className="fixed inset-0 z-50 bg-[#0F1714] text-white flex flex-col justify-between p-6 md:hidden overflow-y-auto"
+            style={{ backgroundColor: '#0F1714' }}
           >
             {/* Drawer Header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <div className="flex items-center justify-between border-b border-white/15 pb-4">
               <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                <BrandLogo light={true} height={56} />
+                <BrandLogo light={true} height={52} />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10"
+                className="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
+                aria-label="Close menu"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Navigation Links */}
-            <div className="flex flex-col gap-6 py-8">
+            <div className="flex flex-col gap-5 py-6">
               {navItems.map((item) => {
                 const IconComponent = item.icon;
 
@@ -175,12 +177,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                       key={item.label}
                       to={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-4 text-2xl font-display font-semibold text-white/90 hover:text-brand-green transition-colors"
+                      className="flex items-center gap-4 text-xl font-display font-semibold text-white hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/5"
                     >
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-brand-green">
+                      <div className="w-10 h-10 rounded-full bg-brand-green/20 flex items-center justify-center text-brand-green shrink-0">
                         <IconComponent className="w-5 h-5" />
                       </div>
-                      <span>{item.label}</span>
+                      <span className="text-white font-medium">{item.label}</span>
                     </Link>
                   );
                 }
@@ -190,19 +192,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                     key={item.label}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-4 text-2xl font-display font-semibold text-white/90 hover:text-brand-green transition-colors"
+                    className="flex items-center gap-4 text-xl font-display font-semibold text-white hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/5"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-brand-green">
+                    <div className="w-10 h-10 rounded-full bg-brand-green/20 flex items-center justify-center text-brand-green shrink-0">
                       <IconComponent className="w-5 h-5" />
                     </div>
-                    <span>{item.label}</span>
+                    <span className="text-white font-medium">{item.label}</span>
                   </a>
                 );
               })}
             </div>
 
             {/* Drawer Footer Actions */}
-            <div className="border-t border-white/10 pt-6 flex flex-col gap-3">
+            <div className="border-t border-white/15 pt-5 flex flex-col gap-3">
               <Button
                 size="lg"
                 className="w-full"
@@ -218,9 +220,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                 href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent('Hello Excel Landsafe Travels, I would like to inquire about your visa and tour services.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-full border border-brand-green text-center text-brand-green font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-green hover:text-white transition-colors"
+                className="w-full py-3.5 rounded-full border border-brand-green bg-brand-green/15 text-center text-white font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-green transition-colors"
               >
-                <MessageSquare className="w-4 h-4" />
+                <MessageSquare className="w-4 h-4 text-brand-green" />
                 <span>Chat on WhatsApp</span>
               </a>
             </div>
