@@ -3,6 +3,7 @@ import { Button } from '../common/Button';
 import { COMPANY_INFO } from '../../data/siteData';
 import { submitInquiryToSupabase } from '../../lib/supabase';
 import { sendAllLeadNotifications } from '../../lib/email';
+import { trackEvent } from '../../utils/analytics';
 import { X, CheckCircle2, AlertCircle, MessageSquare, Send, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -68,6 +69,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
 
     // If either DB or Email succeeded, present success to the user
     if (!dbError || emailSuccess) {
+      trackEvent('inquiry_submitted', { location: 'modal', service, destination: destination || 'unspecified' });
       setSubmitted(true);
     } else {
       console.error("Modal submit error:", dbError);
@@ -157,6 +159,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
                       href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent(`Hello Excel Landsafe, I just submitted an inquiry for ${destination || 'travel advisory'}.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackEvent('whatsapp_click', { location: 'modal_success', destination: destination || 'unspecified' })}
                       className="px-5 py-2.5 rounded-full bg-brand-green text-white font-semibold text-xs flex items-center gap-2 hover:bg-brand-green-hover transition-colors"
                     >
                       <span>Chat Immediately on WhatsApp</span>
@@ -175,6 +178,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
                           href={`https://wa.me/${COMPANY_INFO.whatsappRaw}`} 
                           target="_blank" 
                           rel="noopener noreferrer"
+                          onClick={() => trackEvent('whatsapp_click', { location: 'modal_fallback' })}
                           className="font-semibold underline mt-1 block"
                         >
                           Or contact us directly on WhatsApp &rarr;

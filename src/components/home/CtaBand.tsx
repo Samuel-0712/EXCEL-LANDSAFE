@@ -3,6 +3,7 @@ import { Button } from '../common/Button';
 import { DotPatternBackground } from '../common/CustomAssets';
 import { MessageSquare } from 'lucide-react';
 import { COMPANY_INFO } from '../../data/siteData';
+import { trackEvent } from '../../utils/analytics';
 import { motion } from 'framer-motion';
 
 interface CtaBandProps {
@@ -38,7 +39,10 @@ export const CtaBand: React.FC<CtaBandProps> = ({ onOpenInquiry }) => {
             <Button 
               size="lg"
               className="w-full sm:w-auto text-lg px-9 py-4 shadow-brand"
-              onClick={onOpenInquiry}
+              onClick={() => {
+                trackEvent('inquiry_cta_click', { location: 'final_cta' });
+                onOpenInquiry();
+              }}
             >
               Request Free Consultation
             </Button>
@@ -47,6 +51,7 @@ export const CtaBand: React.FC<CtaBandProps> = ({ onOpenInquiry }) => {
               href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent('Hello Excel Landsafe Travels, I am ready to plan my trip.')}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('whatsapp_click', { location: 'final_cta' })}
               className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 text-white font-semibold text-base flex items-center justify-center gap-2.5 transition-all duration-200"
             >
               <MessageSquare className="w-5 h-5 text-brand-green" />

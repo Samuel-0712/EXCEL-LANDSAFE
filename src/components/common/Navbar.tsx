@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { BrandLogo } from './CustomAssets';
 import { Button } from './Button';
 import { COMPANY_INFO } from '../../data/siteData';
+import { trackEvent } from '../../utils/analytics';
 import { Menu, X, MessageSquare, Compass, ShieldCheck, MapPin, User, Home, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -97,6 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent('Hello Excel Landsafe Travels, I would like to inquire about your visa and tour services.')}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('whatsapp_click', { location: 'nav' })}
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 border ${
                 scrolled 
                   ? 'border-brand-green/30 text-brand-green hover:bg-brand-green/10' 
@@ -109,7 +111,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
 
             <Button 
               size="sm"
-              onClick={() => onOpenInquiry()}
+              onClick={() => {
+                trackEvent('inquiry_cta_click', { location: 'nav' });
+                onOpenInquiry();
+              }}
             >
               Book Consultation
             </Button>
@@ -121,6 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               href={`https://wa.me/${COMPANY_INFO.whatsappRaw}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('whatsapp_click', { location: 'mobile_top_bar' })}
               className="p-2 rounded-full bg-brand-green text-white"
               aria-label="Chat on WhatsApp"
             >
@@ -201,6 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                 size="lg"
                 className="w-full shadow-md"
                 onClick={() => {
+                  trackEvent('inquiry_cta_click', { location: 'mobile_menu' });
                   setMobileMenuOpen(false);
                   onOpenInquiry();
                 }}
@@ -212,6 +219,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                 href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent('Hello Excel Landsafe Travels, I would like to inquire about your visa and tour services.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('whatsapp_click', { location: 'mobile_menu' })}
                 className="w-full py-3.5 rounded-full border-2 border-brand-green/40 bg-white text-center text-brand-charcoal font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-green hover:text-white hover:border-brand-green transition-all shadow-sm"
               >
                 <MessageSquare className="w-4 h-4 text-brand-green" />

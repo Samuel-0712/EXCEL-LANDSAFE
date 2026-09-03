@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BrandLogo } from './CustomAssets';
 import { COMPANY_INFO } from '../../data/siteData';
+import { trackEvent } from '../../utils/analytics';
 import { Phone, Mail, Instagram, Linkedin, MapPin, ArrowUpRight, MessageSquare } from 'lucide-react';
 
 interface FooterProps {
@@ -49,6 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                 href={`https://wa.me/${COMPANY_INFO.whatsappRaw}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('whatsapp_click', { location: 'footer' })}
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-brand-green hover:border-brand-green/50 transition-colors"
                 aria-label="WhatsApp"
               >
@@ -118,6 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
             <div className="space-y-3 text-sm text-white/70">
               <a 
                 href={`tel:${COMPANY_INFO.phoneRaw}`} 
+                onClick={() => trackEvent('phone_click', { location: 'footer' })}
                 className="flex items-center gap-3 hover:text-brand-green transition-colors"
               >
                 <Phone className="w-4 h-4 text-brand-green shrink-0" />

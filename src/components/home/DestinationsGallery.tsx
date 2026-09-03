@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DESTINATIONS_DATA } from '../../data/siteData';
 import { DestinationItem } from '../../types';
 import { RouteLine } from '../common/RouteLine';
+import { trackEvent } from '../../utils/analytics';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -69,7 +70,10 @@ export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSele
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
-                  onClick={() => onSelectDestination(`${dest.name}, ${dest.country}`)}
+                  onClick={() => {
+                    trackEvent('destination_click', { destination: `${dest.name}, ${dest.country}` });
+                    onSelectDestination(`${dest.name}, ${dest.country}`);
+                  }}
                   className={`group relative rounded-3xl overflow-hidden cursor-pointer shadow-soft hover:shadow-elevated transition-all duration-500 bg-brand-charcoal ${
                     isLarge ? 'md:col-span-2 lg:col-span-2 h-96' : 'h-96'
                   }`}

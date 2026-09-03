@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '../components/common/Button';
 import { RouteLine } from '../components/common/RouteLine';
 import { COMPANY_INFO, COMPANY_LEADERSHIP_PROFILES } from '../data/siteData';
+import { trackEvent } from '../utils/analytics';
 
 interface AboutPageProps {
   onOpenInquiry: () => void;
@@ -302,13 +303,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenInquiry }) => {
             Let our senior travel specialists and visa consultants take care of every detail. Reach out today for personalized advisory.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" onClick={onOpenInquiry}>
+            <Button size="lg" onClick={() => {
+              trackEvent('inquiry_cta_click', { location: 'about_page' });
+              onOpenInquiry();
+            }}>
               Start Visa &amp; Travel Inquiry
             </Button>
             <a
               href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent('Hello Excel Landsafe, I was reading your story on the About page and would like to make an inquiry.')}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('whatsapp_click', { location: 'about_page' })}
               className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold text-sm hover:bg-white/10 transition-colors"
             >
               Chat on WhatsApp

@@ -4,6 +4,7 @@ import { Calendar, Check, ChevronDown, ChevronUp, Users, User, ArrowRight } from
 import { PACKAGES_DATA } from '../../data/siteData';
 import { PackageItem } from '../../types';
 import { RouteLine } from '../common/RouteLine';
+import { trackEvent } from '../../utils/analytics';
 
 interface PackagesSectionProps {
   onSelectPackage: (packageName: string) => void;
@@ -134,7 +135,10 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
 
                   {/* Card Action CTA Button */}
                   <button
-                    onClick={() => onSelectPackage(pkg.title)}
+                    onClick={() => {
+                      trackEvent('package_inquire', { package_name: pkg.title, destination: pkg.destination });
+                      onSelectPackage(pkg.title);
+                    }}
                     className="w-full py-3 px-5 rounded-full bg-brand-green text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-brand-green-hover transition-all duration-200 shadow-sm group-hover:shadow-md cursor-pointer"
                   >
                     <span>Inquire About This Package</span>

@@ -3,6 +3,7 @@ import { Button } from '../common/Button';
 import { COMPANY_INFO } from '../../data/siteData';
 import { submitInquiryToSupabase } from '../../lib/supabase';
 import { sendAllLeadNotifications } from '../../lib/email';
+import { trackEvent } from '../../utils/analytics';
 import { Send, CheckCircle2, AlertCircle, MessageSquare, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -48,6 +49,7 @@ export const FormSection: React.FC = () => {
 
     // If either DB or Email succeeded, present success to the user
     if (!dbError || emailSuccess) {
+      trackEvent('inquiry_submitted', { location: 'inline_form', service });
       setSubmitted(true);
     } else {
       console.error("Form submit error:", dbError);
@@ -76,6 +78,7 @@ export const FormSection: React.FC = () => {
                 href={`https://wa.me/${COMPANY_INFO.whatsappRaw}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('whatsapp_click', { location: 'form_section' })}
                 className="flex items-center gap-4 p-4 rounded-2xl bg-brand-light/50 border border-brand-green/20 hover:bg-brand-light transition-colors group"
               >
                 <div className="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center shrink-0">

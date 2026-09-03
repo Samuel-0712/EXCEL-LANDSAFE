@@ -2,6 +2,7 @@ import React from 'react';
 import { DestinationItem } from '../../types';
 import { Button } from '../common/Button';
 import { COMPANY_INFO } from '../../data/siteData';
+import { trackEvent } from '../../utils/analytics';
 import { X, MapPin, Compass, ShieldCheck, Calendar, ArrowRight, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -103,6 +104,7 @@ export const DestinationDetailModal: React.FC<DestinationDetailModalProps> = ({
                 size="lg"
                 className="w-full sm:flex-1"
                 onClick={() => {
+                  trackEvent('package_inquire', { destination: `${destination.name}, ${destination.country}` });
                   onClose();
                   onInquire(`${destination.name}, ${destination.country}`);
                 }}
@@ -114,6 +116,7 @@ export const DestinationDetailModal: React.FC<DestinationDetailModalProps> = ({
                 href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent(`Hello Excel Landsafe, I want to inquire about your travel package for ${destination.name}, ${destination.country}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('whatsapp_click', { location: 'destination_modal', destination: destination.name })}
                 className="w-full sm:w-auto px-6 py-3.5 rounded-full border border-brand-green/30 text-brand-green font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-light transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />

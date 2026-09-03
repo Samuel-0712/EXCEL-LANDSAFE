@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { COMPANY_INFO } from '../../data/siteData';
+import { trackEvent } from '../../utils/analytics';
 import { MessageSquare, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -8,7 +9,7 @@ export const FloatingWhatsAppButton: React.FC = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
-      
+
       {/* Quick Tooltip */}
       <AnimatePresence>
         {showTooltip && (
@@ -19,7 +20,7 @@ export const FloatingWhatsAppButton: React.FC = () => {
             className="bg-brand-charcoal text-white text-xs font-medium px-3.5 py-2 rounded-2xl shadow-elevated border border-white/10 flex items-center gap-2 max-w-xs"
           >
             <span>Have questions? Chat live on WhatsApp</span>
-            <button 
+            <button
               onClick={() => setShowTooltip(false)}
               className="text-white/60 hover:text-white p-0.5"
               aria-label="Dismiss tooltip"
@@ -35,11 +36,12 @@ export const FloatingWhatsAppButton: React.FC = () => {
         href={`https://wa.me/${COMPANY_INFO.whatsappRaw}?text=${encodeURIComponent('Hello Excel Landsafe Travels, I am visiting your website and would like quick travel assistance.')}`}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackEvent('whatsapp_click', { location: 'floating_bubble' })}
         className="group relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-brand hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
         aria-label="Chat on WhatsApp"
       >
         <MessageSquare className="w-7 h-7 fill-current" />
-        
+
         {/* Subtle Pulse Ring */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-75 animate-ping pointer-events-none" />
       </a>
